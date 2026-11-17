@@ -24,6 +24,7 @@ input{width:100%;padding:14px;border:1.5px solid #dfe2f0;border-radius:12px;font
 .avbig{width:54px;height:54px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #5b3df5;flex:none;background:#eeeaff}
 .note{background:#f3f1ff;border-radius:12px;padding:12px;font-size:14px;margin-top:8px;white-space:pre-wrap}
 </style></head><body>
+<div class="acct-top"><a href="index.html"><img src="assets/cheapsewa-logo.png" alt="CheapSewa.Store" class="acct-logo"></a><a class="gpill" href="/api/google-start"><img src="assets/google-g.png" alt=""><span class="g-long">Sign in with Google</span><span class="g-short">Sign in</span></a></div>
 <div class="top"><a href="index.html">&larr; Back to CheapSewa.Store</a><h1 id="title">Welcome</h1><p id="sub">Sign in to track your orders</p></div>
 <div class="sheet">
  <div class="card" id="authCard">
@@ -33,7 +34,7 @@ input{width:100%;padding:14px;border:1.5px solid #dfe2f0;border-radius:12px;font
   <div id="pwBox" hidden><label>Password</label><div style="position:relative"><input id="pw" type="password" autocomplete="current-password" placeholder="At least 8 characters" style="padding-right:64px"><button type="button" id="eye" style="position:absolute;right:8px;top:8px;border:0;background:#eeeaff;color:#5b3df5;font-weight:700;font-size:12px;padding:8px 10px;border-radius:9px">Show</button></div>
   </div>
   <div id="codeBox" hidden><p class="muted" id="sent" style="margin:14px 0 0"></p><label>6-digit code</label><input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456" style="letter-spacing:8px;font-size:24px;text-align:center;font-weight:700"><div class="row" style="margin-top:10px"><button type="button" class="badge" id="rs" style="border:0" disabled>Resend code</button><button type="button" class="badge" id="chg" style="border:0">Change email</button></div></div>
-  <a class="btn" href="/api/google-start" style="display:block;text-align:center;text-decoration:none;margin:0 0 12px;background:#fff;color:#1d2433;border:1px solid #dadce0">Continue with Google</a>
+  <a class="gpill gpill-wide" href="/api/google-start"><img src="assets/google-g.png" alt=""><span class="g-long">Sign in with Google</span><span class="g-short">Sign in</span></a>
   <p class="err" id="err"></p><button class="btn" id="go">Email me a code</button><p class="muted" id="forgot" style="text-align:center;margin:12px 0 0" hidden>Forgot your password? Use the <b>Email code</b> tab, or <a href="https://wa.me/9779717647043" style="color:#5b3df5;font-weight:700">message us on WhatsApp</a> or email <a href="mailto:support@cheapsewa.store" style="color:#5b3df5;font-weight:700">support@cheapsewa.store</a></p>
  </div>
  <div id="dash" hidden>
