@@ -1,7 +1,8 @@
 (window.CS_READY||Promise.resolve()).then(()=>{
 const products=window.CS_PRODUCTS||[];
 const params=new URLSearchParams(location.search),id=Number(params.get("id"));
-const p=products.find(x=>x.id===id),root=document.getElementById("buyPageContent");
+const slugPart=window.CS_PAGE_SLUG||decodeURIComponent(location.pathname.replace(/\/+$/,"").split("/").pop()||"").replace(/\.html$/i,"").toLowerCase();
+const p=products.find(x=>x.id===id)||products.find(x=>x.slug===slugPart),root=document.getElementById("buyPageContent");
 const money=CS.money,esc=CS.esc;
 const WA_NUMBER="9779717647043";
 document.getElementById("year").textContent=new Date().getFullYear();
@@ -17,13 +18,15 @@ if(!p){
  <p class="buy-description">${esc(p.desc)} Choose your plan, then add it to your cart or buy it now.</p>
  <div id="modeBox"></div><div class="buy-plans" id="planList"></div>
  <div class="instant-note"><span class="instant-ic">⚡</span><div><b>Instant delivery after payment</b><small>Pay, send your screenshot and your subscription is delivered right away. Need help? <a href="mailto:support@cheapsewa.store">support@cheapsewa.store</a></small></div></div>
- <div class="buy-actions"><button class="primary-btn full" type="button" id="addToCartBtn">Add to cart +</button><a class="cart-link" href="index.html#cart" id="goCart">View cart (<span id="cartN">0</span>)</a></div>
- <div class="buy-or">or buy this plan right now</div>
+ <div class="buy-or">Buy this plan now</div>
  <form id="productOrderForm" novalidate>
   <div class="buy-price-hint">Your details</div>
   <div class="product-order-fields"><label>Full name<input name="name" required placeholder="Your name"></label><label>Phone number<input name="phone" required inputmode="tel" placeholder="98XXXXXXXX"></label></div>
   <button class="primary-btn full" type="button" id="productContinue">Continue to amount <span>→</span></button>
  </form>
+ <div class="buy-or">or add more items to your cart first</div>
+ <div class="buy-actions buy-actions-2"><button class="primary-btn full" type="button" id="addToCartBtn">Add to cart +</button><a class="wa-inquiry" href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I want to ask about " + p.name + " from CheapSewa.Store.")}" target="_blank" rel="noopener">Inquiry on WhatsApp</a></div>
+ <a class="cart-link" href="index.html#cart" id="goCart">View cart (<span id="cartN">0</span>)</a>
  <div class="buy-trust"><span>⚡ Instant delivery after payment</span><span>🇳🇵 Made for Nepal</span><span>🔒 Verify before paying</span><span>💳 Local payment options</span></div>
  <div class="buy-help"><b>Payment help</b><br>eSewa · Khalti · Fonepay · Bank transfer<br><a href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener">Need help? WhatsApp support: 9717647043</a><br><a href="mailto:support@cheapsewa.store">✉ support@cheapsewa.store</a></div>
  </div></div>
@@ -57,6 +60,8 @@ if(!p){
    </section>
   </form>
  </div>`;
+
+ root.insertAdjacentHTML("beforeend",window.CS_BUY_EXTRAS?window.CS_BUY_EXTRAS(p):"");
 
  /* ---- Sharing / Private switch + plan list ---- */
  const MODES=(Array.isArray(p.modes)&&p.modes.length&&p.plans.every(pl=>p.modes.some(m=>pl[0].indexOf(m+" · ")===0)))?p.modes:null;
@@ -100,7 +105,7 @@ if(!p){
   overlay.classList.add("show");modal.classList.add("show");
  };
  const closeModal=()=>{stop();overlay.classList.remove("show");modal.classList.remove("show")};
- $("productContinue").onclick=()=>{if(form.elements.name.reportValidity()&&form.elements.phone.reportValidity())openModal()};
+ $("productContinue").onclick=()=>{const nm=form.elements.name.value.trim(),ph=form.elements.phone.value.trim();if(!nm||!ph){toast("Please enter your name and phone number first");(nm?form.elements.phone:form.elements.name).focus();return}if(form.elements.name.reportValidity()&&form.elements.phone.reportValidity())openModal()};
  $("pClose").onclick=closeModal;overlay.onclick=closeModal;
  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
  $("pChange").onclick=()=>{stop();pForm.reset();showStep(1)};

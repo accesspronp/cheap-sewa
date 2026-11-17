@@ -159,8 +159,8 @@
 .buy-actions{margin-top:18px}
 @media(max-width:520px){
  .payment-options{grid-template-columns:repeat(2,minmax(0,1fr))}
- .shared-qr-card,.product-qr-card{grid-template-columns:1fr 112px;padding:11px}
- .shared-payment-qr,.product-qr-card .shared-payment-qr{width:112px;height:112px}
+ .shared-qr-card,.product-qr-card{grid-template-columns:1fr 160px;padding:11px}
+ .shared-payment-qr,.product-qr-card .shared-payment-qr{width:160px;height:160px}
  .product-order-fields{grid-template-columns:1fr}
 }
 
@@ -216,8 +216,8 @@ img,video,svg,iframe { max-width:100%; }
  .checkout-modal .form-grid { grid-template-columns:minmax(0,1fr); }
  .checkout-modal .wide { grid-column:1; }
  .payment-options { grid-template-columns:repeat(2,minmax(0,1fr)); }
- .shared-qr-card,.product-qr-card { grid-template-columns:minmax(0,1fr) 112px;gap:10px;padding:11px; }
- .shared-payment-qr,.product-qr-card .shared-payment-qr { width:112px;height:112px; }
+ .shared-qr-card,.product-qr-card { grid-template-columns:minmax(0,1fr) 160px;gap:10px;padding:11px; }
+ .shared-payment-qr,.product-qr-card .shared-payment-qr { width:160px;height:160px; }
  .buy-layout { grid-template-columns:minmax(0,1fr);gap:22px; }
  .buy-art { min-height:190px; }
  .product-order-fields { grid-template-columns:minmax(0,1fr); }
@@ -244,8 +244,8 @@ img,video,svg,iframe { max-width:100%; }
  .product-grid { gap:8px; }
  .mobile-bottom-nav { left:7px;right:7px; }
  .mobile-nav-cart { width:67px;height:67px; }
- .shared-qr-card,.product-qr-card { grid-template-columns:minmax(0,1fr) 98px; }
- .shared-payment-qr,.product-qr-card .shared-payment-qr { width:98px;height:98px; }
+ .shared-qr-card,.product-qr-card { grid-template-columns:minmax(0,1fr) 160px; }
+ .shared-payment-qr,.product-qr-card .shared-payment-qr { width:160px;height:160px; }
 }
 @media(prefers-reduced-motion:reduce) {
  *,*:before,*:after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; }
@@ -324,7 +324,8 @@ img,video,svg,iframe { max-width:100%; }
 .cs-done-note{display:block;margin-top:12px;color:#7a81a0;font-size:12px}
 .pay-strip-row img[alt="eSewa"],.pay-strip-row img[alt="Khalti"]{height:46px;padding:6px 18px}
 @media(max-width:700px){
- .head-actions .text-btn{display:none}
+ .head-actions .text-btn{display:inline-flex}
+ #loginBtn span{display:inline}
  .search{flex:1 1 0;min-width:0;width:auto}
  .hamb{flex:none;display:block}
  .pay-tile img[alt="eSewa"],.pay-tile img[alt="Khalti"]{max-height:52px}
@@ -613,3 +614,38 @@ body::before{content:"";position:absolute;left:15%;width:70%;top:0;height:900px;
 .rv-av{width:36px;height:36px;border-radius:50%;background:#e6e0ff;color:var(--purple);display:grid;place-items:center;font-weight:800}
 .rv-empty{grid-column:1/-1;color:var(--muted);font-size:14px;margin:4px 0}
 @media(max-width:560px){.reviews-box{padding:18px;border-radius:18px}}
+
+/* Buy page extras */
+.buy-extra{max-width:1100px;margin:32px auto 0;padding:0 16px;display:grid;gap:20px}
+.buy-extra .card-box{background:#fff;border:1px solid #e6e9f2;border-radius:16px;padding:22px;color:#1d2433}
+.buy-extra h2{font-size:1.4rem;margin:0 0 10px}
+.buy-extra h3{font-size:1.05rem;margin:14px 0 6px}
+.buy-extra p,.buy-extra li{color:#3d4658;line-height:1.6}
+.buy-extra .faq-q{font-weight:700;margin:12px 0 2px;color:#1d2433}
+.how-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.how-video-frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0f1424}
+.how-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.how-video-soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:6px;text-align:center;padding:10px}
+.how-play{width:58px;height:58px;border-radius:50%;background:#6740ed;display:grid;place-items:center;font-size:22px;color:#fff;box-shadow:0 8px 24px rgba(103,64,237,.45)}
+.how-steps{padding-left:20px}
+.buy-extra .back-site{display:inline-block;justify-self:start}
+
+.how-video-frame video{position:absolute;inset:0;width:100%;height:100%;background:#000;object-fit:contain}
+.how-video-frame.portrait{aspect-ratio:9/16;max-height:560px;width:min(100%,315px);margin:0 auto}
+
+/* Mobile: small search box and visible Sign in */
+@media(max-width:700px){.search{flex:0 1 130px!important;width:130px!important}}
+
+/* v19: buy buttons and WhatsApp icon */
+.buy-actions-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
+.wa-inquiry{display:flex;align-items:center;justify-content:center;border-radius:999px;background:#16c98f;color:#073c30;font-weight:700;padding:14px 10px;text-decoration:none;text-align:center;font-size:14px}
+.floating-wa{background:#fff!important;box-shadow:0 10px 26px rgba(0,0,0,.18)!important}
+.floating-wa img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.4)}
+.floating-wa{overflow:hidden;padding:0}
+
+/* Shop now: sheen sweep and arrow nudge (0.4s of every 2.4s) */
+.hero-shop-btn:after{animation:shopShine 2.4s ease-in-out infinite}
+.hero-shop-btn > span{animation:shopArrow 2.4s ease-in-out infinite}
+@keyframes shopShine{0%{transform:translateX(-130%)}16%{transform:translateX(130%)}100%{transform:translateX(130%)}}
+@keyframes shopArrow{0%{transform:translateX(0)}8%{transform:translateX(6px)}16%,100%{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){.hero-shop-btn:after,.hero-shop-btn > span{animation:none}}
